@@ -8,7 +8,7 @@ export default () => (
     <Nav />
 
     <div className="hero">
-      <h1 className="title">Welcome to Next!</h1>
+      <h1 className="title">Welcome Students</h1>
       <p className="description">To get started, edit <code>pages/index.js</code> and save to reload.</p>
 
       <div className="row">
@@ -36,6 +36,9 @@ export default () => (
     </div>
 
     <style jsx>{`
+      .logo {
+        width: 20%
+      }
       .hero {
         width: 100%;
         color: #333;
