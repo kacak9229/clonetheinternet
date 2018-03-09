@@ -13,6 +13,7 @@ const config = require('./config/secret');
 
 /* All routes */
 const mainRoutes = require('./routes/main')
+const accountRoutes = require('./routes/account')
 
 mongoose.connect(config.database, (err) => {
   if (err) {
@@ -35,6 +36,7 @@ app.prepare()
     return handle(req, res)
   })
 
+  server.use('/api/account', accountRoutes);
   server.use('/api', mainRoutes);
 
   server.get('*', (req, res) => {

@@ -6,7 +6,7 @@ const checkJWT = require('../middlewares/check-jwt');
 const User       = require('../models/user');
 const superSecret = config.secret;
 const router = require('express').Router()
-
+const request = require('request');
 
 /* LOGIN ROUTE */
 router.post('/login', (req, res, next) => {
@@ -55,39 +55,61 @@ router.post('/login', (req, res, next) => {
 
 /* SIGNUP ROUTE */
 router.post('/signup', (req, res, next) => {
+  async.waterfall([
+    function(callback) {
+      var user = new User();
+      user.name = req.body.name;
+      user.email = req.body.email;
+      user.password = req.body.password;
+      user.picture = user.gravatar();
 
-    var user = new User();
-    user.name = req.body.name;
-    user.email = req.body.email;
-    user.password = req.body.password;
-    user.picture = user.gravatar();
+      User.findOne({ email: req.body.email }, (err, existingUser) => {
 
-    User.findOne({ email: req.body.email }, (err, existingUser) => {
+        if (existingUser) {
 
-      if (existingUser) {
+          res.json({
+            success: false,
+            message: 'Account with that email is already exist',
+          });
 
-        res.json({
-          success: false,
-          message: 'Account with that email is already exist',
-        });
+        } else {
+          callback(err, user);
+        }
+      });
+    },
 
-      } else {
-
-        user.save()
-        var token = jwt.sign({
-          user: user
-        }, superSecret, {
-          expiresIn: '7d' // expires in 24 hours
-        });
-
-        // return the information including token as JSON
-        res.json({
-          success: true,
-          message: 'Enjoy your token!',
-          token: token
-        });
-      }
-    });
+    function(user) {
+      request({
+        url: 'https://us12.api.mailchimp.com/3.0/lists/4a14db449e/members',
+        method: 'POST',
+        headers: {
+          'Authorization': 'randomUser c6705b6f72d959f135bba7a66f13c3bd-us12',
+          'Content-Type': 'application/json'
+        },
+        json: {
+          'email_address': user.email,
+          'status': 'subscribed'
+        }
+      }, function(err, response, body) {
+        if (err) {
+          return next(err);
+        } else {
+          user.save()
+          var token = jwt.sign({
+            user: user
+          }, superSecret, {
+            expiresIn: '7d' // expires in 7 days
+          });
+          // return the information including token as JSON
+          res.json({
+            success: true,
+            message: 'Enjoy your token!',
+            token: token
+          });
+        }
+      });
+    }
+  ]);
 });
 
 /* PROFILE ROUTE */
@@ -122,48 +144,21 @@ router.route('/profile')
 
   /* GET - My-courses */
   router.get('/my-courses', checkJWT, (req, res, next) => {
-
-    Order
+    User
     .find({ owner: req.decoded.user._id })
-    .populate('products.product')
-    .populate('owner')
-    .exec((err, orders) => {
-      if (err) {
+    .populate('courses.course')
+    .exec((err, courses) => {
+      if (courses) {
         res.json({
-          success: false,
-          message: 'Couldn\'t find your order'
+          success: true,
+          courses: courses
         });
       } else {
         res.json({
-          success: true,
-          message: "Found your order",
-          orders: orders
-        });
-      }
-    });
-  });
-
-  /* GET - My-courses , single course */
-  router.get('/my-courses/:id', checkJWT, (req, res, next) => {
-
-    Order
-    .findOne({ _id: req.params.id })
-    .deepPopulate('products.product.owner')
-    .populate('owner')
-    .exec((err, order) => {
-      if (err) {
-        res.json({
           success: false,
-          message: 'Couldn\'t find your orders'
-        });
-      } else {
-        res.json({
-          success: true,
-          message: "Found your orders",
-          order: order
+          message: 'You havent enrolled in any of the courses'
         });
       }
-
     });
   });
 

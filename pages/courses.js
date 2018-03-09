@@ -4,11 +4,12 @@ import Layout from '../components/layout'
 
 const Courses = props => (
   <Layout>
-    <h1>Welcome to courses</h1>
+    <h1> Welcome to courses </h1>
     <ul>
-      {props.courses.map(({ title, _id }) => (
-        <li key={_id}>
-          <p>{title}</p>
+      {props.courses.map(course => (
+        <li key={course._id}>
+          <p> {course.title} </p> <img src={course.image} />
+          <p> {course.description} </p>
         </li>
       ))}
     </ul>
@@ -21,7 +22,9 @@ Courses.getInitialProps = async function() {
 
   console.log(courses)
 
-  return { courses }
+  return {
+    courses,
+  }
 }
 
 export default Courses
