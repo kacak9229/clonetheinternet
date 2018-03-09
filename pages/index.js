@@ -32,6 +32,13 @@ export default () => (
             <p>Was this tool helpful? Let us know how we can improve it</p>
           </a>
         </Link>
+
+        <Link href="/course">
+          <a className="card">
+            <h3>Next app</h3>
+            <p>Click the app run time</p>
+          </a>
+        </Link>
       </div>
     </div>
 

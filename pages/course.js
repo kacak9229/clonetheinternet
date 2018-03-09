@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import axios from 'axios'
 import fetch from 'isomorphic-unfetch'
 import Layout from '../components/layout'
 
@@ -7,10 +6,11 @@ const Course = (props) => (
   <Layout>
     <h1>Welcome to courses</h1>
     <ul>
-      {props.courses.map(({ title, _id }) => (
-        <li key={ _id }>
-          <p>{title}</p>
-
+      {props.courses.map((course) => (
+        <li key={ course._id }>
+          <p>{course.title}</p>
+          <img src={ course.image } />
+          <p>{ course.description }</p>
         </li>
       ))}
     </ul>

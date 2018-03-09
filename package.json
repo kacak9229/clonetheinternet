@@ -7,8 +7,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "async": "^2.6.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.2",
+    "braintree": "^2.8.0",
     "express": "^4.16.2",
     "isomorphic-unfetch": "^2.0.0",
     "jsonwebtoken": "^8.2.0",
@@ -16,6 +18,7 @@
     "morgan": "^1.9.0",
     "next": "5.0.0",
     "react": "16.2.0",
-    "react-dom": "16.2.0"
+    "react-dom": "16.2.0",
+    "request": "^2.83.0"
   }
 }

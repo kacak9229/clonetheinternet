@@ -9,7 +9,10 @@ const UserSchema = new Schema({
   email: { type: String, unique: true, lowercase: true},
   password: String,
   name: String,
-  picture: String,
+  image: String,
+  courses: [{
+    course: { type: Schema.Types.ObjectId, ref: 'Course'},
+  }],
   created: { type: Date, default: Date.now },
 });
 
