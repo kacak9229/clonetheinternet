@@ -10,7 +10,7 @@ const Course = (props) => (
       {props.courses.map(({ title, _id }) => (
         <li key={ _id }>
           <p>{title}</p>
-          
+
         </li>
       ))}
     </ul>
