@@ -1,86 +1,59 @@
 import Link from 'next/link'
 import Head from '../components/head'
 import Nav from '../components/nav'
+import Layout from '../components/layout'
+
+const images = [
+  { src: '/static/Facebook.svg', alt: 'facebook' },
+  { src: '/static/Snapchat.svg', alt: 'snapchat' },
+  { src: '/static/Tinder.svg', alt: 'tinder' },
+  { src: '/static/Whatsapp.svg', alt: 'whatsapp' },
+].map(image => {
+  image.key = `banner-img-${image.src}-${image.alt}`
+  return image
+})
 
 export default () => (
   <div>
-    <Head title="Home" />
-    <Nav />
-
-    <div className="hero">
-      <h1 className="title">Welcome Students</h1>
-      <p className="description">To get started, edit <code>pages/index.js</code> and save to reload.</p>
-
-      <div className="row">
-        <Link href="https://github.com/zeit/next.js#getting-started">
-          <a className="card">
-            <h3>Getting Started &rarr;</h3>
-            <p>Learn more about Next on Github and in their examples</p>
-          </a>
-        </Link>
-        <Link href="https://open.segment.com/create-next-app">
-          <a className="card">
-            <h3>Examples &rarr;</h3>
-            <p>
-              Find other example boilerplates on the <code>create-next-app</code> site
+    <Layout>
+      <section id="home">
+        <div className="container text-white text-center">
+          <div className="jumbotron" id="jum">
+            <h1 className="display-2">Clone The Internet</h1>
+            <p id="description" className="lead mt-5">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
+              suscipit incidunt esse, aspernatur ullam facere.
             </p>
-          </a>
-        </Link>
-        <Link href="https://github.com/segmentio/create-next-app">
-          <a className="card">
-            <h3>Create Next App &rarr;</h3>
-            <p>Was this tool helpful? Let us know how we can improve it</p>
-          </a>
-        </Link>
-      </div>
-    </div>
+            <p className="lead">
+              <Link href="/login">
+                <a className="btn btn-success btn-nice btn-lg">Sign Up Now</a>
+              </Link>
+            </p>
+          </div>
+          <div className="row">
+            {images.map(({ key, src, alt }) => (
+              <div className="col-md-3">
+                <img className="banner-img" key={key} src={src} alt={alt} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </Layout>
 
     <style jsx>{`
-      .logo {
-        width: 20%
+      #jum {
+        background-color: transparent;
       }
-      .hero {
+
+      #description {
+        font-size: 2.3rem;
+      }
+
+      .banner-img {
         width: 100%;
-        color: #333;
-      }
-      .title {
-        margin: 0;
-        width: 100%;
-        padding-top: 80px;
-        line-height: 1.15;
-        font-size: 48px;
-      }
-      .title, .description {
-        text-align: center;
-      }
-      .row {
-        max-width: 880px;
-        margin: 80px auto 40px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-      }
-      .card {
-        padding: 18px 18px 24px;
-        width: 220px;
-        text-align: left;
-        text-decoration: none;
-        color: #434343;
-        border: 1px solid #9B9B9B;
-      }
-      .card:hover {
-        border-color: #067df7;
-      }
-      .card h3 {
-        margin: 0;
-        color: #067df7;
-        font-size: 18px;
-      }
-      .card p {
-        margin: 0;
-        padding: 12px 0 0;
-        font-size: 13px;
-        color: #333;
+        max-width: 200px;
+        height: 100%;
       }
     `}</style>
   </div>

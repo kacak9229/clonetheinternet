@@ -2,59 +2,49 @@ import Head from './head'
 import Link from 'next/link'
 
 const links = [
-  { href: 'https://github.com/segmentio/create-next-app', label: 'Github' }
+  { href: '/courses', label: 'Courses' },
+  { href: '/login', label: 'Login' },
 ].map(link => {
   link.key = `nav-link-${link.href}-${link.label}`
   return link
 })
 
-const Nav = () => (
-  <nav>
-    <ul>
-      <li>
-        <Link prefetch href="/">
+const style = {
+  'align-items': 'left',
+  'margin-left': '50px',
+}
 
-          <a><img src="/static/cloneblack2.png" /></a>
-        </Link>
-      </li>
-      <ul>
-        {links.map(
-          ({ key, href, label }) => (
-            <li key={key}>
+const Nav = () => (
+  <nav className="navbar navbar-expand-md navbar-dark bg-main">
+    <div className="container">
+      <Link prefetch href="/">
+        <a className="navbar-brand">
+          <img src="/static/clonewhite.png" alt="logo" />
+        </a>
+      </Link>
+      <button
+        className="navbar-toggler"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+      >
+        <span className="navbar-toggler-icon" />
+      </button>
+      <div
+        style={style}
+        className="collapse navbar-collapse flex-column"
+        id="navbarNav"
+      >
+        <ul className="navbar-nav ml-auto">
+          {links.map(({ key, href, label }) => (
+            <li key={key} className="nav-item">
               <Link href={href}>
-                <a>{label}</a>
+                <a className="nav-link">{label}</a>
               </Link>
             </li>
-          )
-        )}
-      </ul>
-    </ul>
-
-    <style jsx>{`
-      :global(body) {
-        margin: 0;
-        font-family: -apple-system,BlinkMacSystemFont,Avenir Next,Avenir,Helvetica,sans-serif;
-      }
-      nav {
-        text-align: center;
-      }
-      ul {
-        display: flex;
-        justify-content: space-between;
-      }
-      nav > ul {
-        padding: 4px 16px;
-      }
-      li {
-        display: flex;
-        padding: 6px 8px;
-      }
-      a {
-        color: #067df7;
-        text-decoration: none;
-        font-size: 13px;
-      }
-    `}</style>
+          ))}
+        </ul>
+      </div>
+    </div>
   </nav>
 )
 
