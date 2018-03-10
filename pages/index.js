@@ -26,13 +26,15 @@ export default () => (
             </p>
             <p className="lead">
               <Link href="/login">
-                <a className="btn btn-success btn-nice btn-lg">Sign Up Now</a>
+                <a className="btn btn-success btn-nice btn-lg">
+                  Get Exclusive Access Now!
+                </a>
               </Link>
             </p>
           </div>
           <div className="row">
             {images.map(({ key, src, alt }) => (
-              <div className="col-md-3">
+              <div className="col-md-3 mb-5">
                 <img className="banner-img" key={key} src={src} alt={alt} />
               </div>
             ))}
