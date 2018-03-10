@@ -39,6 +39,10 @@ app.prepare()
   server.use('/api/account', accountRoutes);
   server.use('/api', mainRoutes);
 
+  server.get('/courses/:id', (req, res) => {
+    return app.render(req, res, '/course', { id: req.params.id })
+  });
+
   server.get('*', (req, res) => {
     return handle(req, res)
   })

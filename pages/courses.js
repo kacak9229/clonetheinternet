@@ -2,17 +2,29 @@ import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 import Layout from '../components/layout'
 
+const style = {
+  'width': '18rem'
+}
+
 const Courses = props => (
+
   <Layout>
-    <h1> Welcome to courses </h1>
-    <ul>
-      {props.courses.map(course => (
-        <li key={course._id}>
-          <p> {course.title} </p> <img src={course.image} />
-          <p> {course.description} </p>
-        </li>
-      ))}
-    </ul>
+
+    {props.courses.map(course => (
+
+      <div className="card" style={style}>
+        <img className="card-img-top" src={course.image} alt="Card image cap" />
+        <div className="card-body">
+          <h5 className="card-title">{ course.title }</h5>
+          <p className="card-text">{ course.description}</p>
+          <Link as={`/courses/${course._id}`} href={`/course?id=${course._id}`}>
+            <a className="btn btn-primary">Go somewhere</a>
+          </Link>
+        </div>
+      </div>
+    ))}
+
+
   </Layout>
 )
 

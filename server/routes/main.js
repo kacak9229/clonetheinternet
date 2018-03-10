@@ -5,6 +5,7 @@ const braintree = require('braintree');
 
 /* Local libraries/modules */
 const checkJWT = require('../middlewares/check-jwt');
+const checkCoursePaid = require('../middlewares/check-course-paid');
 const User       = require('../models/user');
 const Course = require('../models/course');
 
@@ -23,11 +24,30 @@ router.get('/courses', (req, res, next) => {
   });
 });
 
-/* GET A SINGLE COURSE */
+/* GET A SINGLE COURSE || If paid then simply move the user to the video page, if not then just the landing page*/
+// router.get('/courses/:id', checkJWT, (req, res, next) => {
+//   Course.findOne({ _id: req.params.id , 'ownByStudent.user': req.decoded.user._id }, (err, foundStudent) => {
+//     let paid = false;
+//     if (foundStudent) {
+//       paid = true;
+//       res.json({
+//         success: true,
+//         message: `You are enrolled in ${foundStudent.title}`,
+//         course: foundStudent,
+//       });
+//     } else {
+//       res.json({
+//         success: false,
+//         message: `You are not enrolled in ${foundStudent.title}`,
+//         course: foundStudent
+//       })
+//     }
+//   });
+// });
+
 router.get('/courses/:id', (req, res, next) => {
   Course.findOne({ _id: req.params.id }, (err, course) => {
-    if (err) return next(err);
-    res.json(course);
+    res.json(course)
   });
 });
 
@@ -55,7 +75,7 @@ router.post('/payment', checkJWT, (req, res, next) => {
     function() {
       User.update(
         {
-          _id: req.user._id,
+          _id: req.decoded.user._id,
           'courses.course': { $ne: req.query.courseID }
         },
         {

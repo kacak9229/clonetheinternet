@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
-const config = require('../config/secret')
+const config = require('../config/secret');
 
 module.exports = function(req, res, next) {
 
-  let token = req.headers["authorization"];
+  let token = req.headers['authorization'];
   // decode token
   if (token) {
     // verifies secret and checks exp
