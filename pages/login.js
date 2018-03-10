@@ -33,7 +33,7 @@ const Login = props => (
             <span className="ml-5">Login With Facebook</span>
           </a>
           <p className="mt-2 mb-0 text-center text-lead">
-            Don't have an account?
+            Dont have an account?
           </p>
           <Link href="/register">
             <a id="signuplink" className="text-center">
