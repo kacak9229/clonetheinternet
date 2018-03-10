@@ -21,13 +21,13 @@ const Layout = props => (
           #0052d4,
           #65c7f7,
           #9cecfb
-        ); /* Chrome 10-25, Safari 5.1-6 */
+        ) fixed; /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(
           to bottom,
           #0052d4,
           #65c7f7,
           #9cecfb
-        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        ) fixed; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       }
 
       .btn-nice {
