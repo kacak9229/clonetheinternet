@@ -5,7 +5,7 @@ const checkJWT = require('../middlewares/check-jwt');
 /* MODELS */
 const User       = require('../models/user');
 const superSecret = config.secret;
-const router = require('express').Router()
+const router = require('express').Router();
 const request = require('request');
 
 /* LOGIN ROUTE */

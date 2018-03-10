@@ -8,6 +8,7 @@ const CourseSchema = new Schema({
   image: String
 });
 
+
 // var CourseSchema = new Schema({
 //   title: { type: String, index: true, trim: true },
 //   promocode: String,

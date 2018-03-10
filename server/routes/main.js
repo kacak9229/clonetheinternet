@@ -32,7 +32,7 @@ router.get('/courses/:id', (req, res, next) => {
 });
 
 /* Payment API */
-app.post('/payment', checkJWT, (req, res, next) => {
+router.post('/payment', checkJWT, (req, res, next) => {
   async.parallel([
     function(callback) {
       gateway.transaction.sale({
