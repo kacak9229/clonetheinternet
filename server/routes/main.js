@@ -1,28 +1,34 @@
 /* Official libraries */
 const router = require('express').Router()
-const async      = require('async');
-const braintree = require('braintree');
+const async = require('async')
+const braintree = require('braintree')
 
 /* Local libraries/modules */
+<<<<<<< HEAD
 const checkJWT = require('../middlewares/check-jwt');
 const checkCoursePaid = require('../middlewares/check-course-paid');
 const User       = require('../models/user');
 const Course = require('../models/course');
+=======
+const checkJWT = require('../middlewares/check-jwt')
+const User = require('../models/user')
+const Course = require('../models/course')
+>>>>>>> master
 
 const gateway = braintree.connect({
   environment: braintree.Environment.Sandbox,
   merchantId: 'thn3nwt332tsvjqn',
   publicKey: 'k6k2qgm9gzrwz42t',
-  privateKey: '7717476b1a8a826cb1baf58d440fb69c'
-});
+  privateKey: '7717476b1a8a826cb1baf58d440fb69c',
+})
 
 /* GET ALL COURSES */
 router.get('/courses', (req, res, next) => {
   Course.find({}, (err, courses) => {
-    if (err) return next(err);
-    res.json(courses);
-  });
-});
+    if (err) return next(err)
+    res.json(courses)
+  })
+})
 
 /* GET A SINGLE COURSE || If paid then simply move the user to the video page, if not then just the landing page*/
 // router.get('/courses/:id', checkJWT, (req, res, next) => {
@@ -92,14 +98,13 @@ router.post('/payment', checkJWT, (req, res, next) => {
 
 /* TEST A COURSE */
 router.post('/test-course', (req, res, next) => {
-  let course = new Course();
-  course.title = req.body.title;
-  course.description = req.body.description;
-  course.image = req.body.image;
-  course.price = req.body.price;
-  course.save();
-  res.json({ message: 'Successfully added a new course' });
-});
+  let course = new Course()
+  course.title = req.body.title
+  course.description = req.body.description
+  course.image = req.body.image
+  course.price = req.body.price
+  course.save()
+  res.json({ message: 'Successfully added a new course' })
+})
 
-
-module.exports = router;
+module.exports = router
