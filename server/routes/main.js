@@ -4,16 +4,9 @@ const async = require('async')
 const braintree = require('braintree')
 
 /* Local libraries/modules */
-<<<<<<< HEAD
-const checkJWT = require('../middlewares/check-jwt');
-const checkCoursePaid = require('../middlewares/check-course-paid');
-const User       = require('../models/user');
-const Course = require('../models/course');
-=======
 const checkJWT = require('../middlewares/check-jwt')
 const User = require('../models/user')
 const Course = require('../models/course')
->>>>>>> master
 
 const gateway = braintree.connect({
   environment: braintree.Environment.Sandbox,
