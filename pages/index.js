@@ -21,8 +21,7 @@ export default () => (
           <div className="jumbotron" id="jum">
             <h1 className="display-2">Clone The Internet</h1>
             <p id="description" className="lead mt-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
-              suscipit incidunt esse, aspernatur ullam facere.
+              Do you want to change the world?
             </p>
             <p className="lead">
               <Link href="/login">
