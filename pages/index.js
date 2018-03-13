@@ -15,9 +15,9 @@ const images = [
 
 export default () => (
   <div>
-    <Layout>
+    <Layout title="Home">
       <section id="home">
-        <div className="container text-white text-center">
+        <div className="container text-center">
           <div className="jumbotron" id="jum">
             <h1 className="display-2">Clone The Internet</h1>
             <p id="description" className="lead mt-5">
@@ -25,7 +25,7 @@ export default () => (
             </p>
             <p className="lead">
               <Link href="/login">
-                <a className="btn btn-success btn-nice btn-lg">
+                <a className="btn btn-success btn-lg">
                   Get Exclusive Access Now!
                 </a>
               </Link>
@@ -33,8 +33,8 @@ export default () => (
           </div>
           <div className="row">
             {images.map(({ key, src, alt }) => (
-              <div className="col-md-3 mb-5">
-                <img className="banner-img" key={key} src={src} alt={alt} />
+              <div key={key} className="col-md-3 mb-5">
+                <img className="banner-img" src={src} alt={alt} />
               </div>
             ))}
           </div>
@@ -43,6 +43,9 @@ export default () => (
     </Layout>
 
     <style jsx>{`
+      .jumbotron {
+        box-shadow: none;
+      }
       #jum {
         background-color: transparent;
       }
