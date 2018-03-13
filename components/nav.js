@@ -10,16 +10,16 @@ const links = [
 })
 
 const style = {
-  'align-items': 'left',
-  'margin-left': '50px',
+  alignItems: 'left',
+  marginLeft: '50px',
 }
 
 const Nav = () => (
-  <nav className="navbar navbar-expand-md navbar-dark bg-main">
+  <nav className="nav navbar navbar-expand-md navbar-light">
     <div className="container">
       <Link prefetch href="/">
         <a className="navbar-brand">
-          <img src="/static/clonewhite.png" alt="logo" />
+          <img src="/static/cloneblack2.png" alt="logo" />
         </a>
       </Link>
       <button
@@ -45,6 +45,12 @@ const Nav = () => (
         </ul>
       </div>
     </div>
+    <style jsx>{`
+      .nav {
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.0975);
+      }
+    `}</style>
   </nav>
 )
 

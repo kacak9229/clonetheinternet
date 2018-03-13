@@ -3,7 +3,7 @@ import fetch from 'isomorphic-unfetch'
 import Layout from '../components/layout'
 
 const Register = props => (
-  <Layout>
+  <Layout title="Register">
     <section id="login">
       <div className="container">
         <div id="loginDialogue">
@@ -34,49 +34,53 @@ const Register = props => (
               className="form-control mt-4"
               placeholder="Confirm Password"
             />
-
-            <a className="btn btn-block btn-lg btn-primary btn-login mt-5 text-white">
+            <a className="m-0 btn btn-block btn-lg btn-primary mt-5 text-white">
               Sign Up
             </a>
           </form>
         </div>
       </div>
     </section>
-    <style jsx>{`
-      #logo {
-        width: 100%;
-      }
+    <style jsx>
+      {`
+        #logo {
+          width: 100%;
+        }
 
-      #loginDialogue {
-        width: 350px;
-        background-color: white;
-        margin: 150px auto;
-        border-radius: 2px;
-        padding: 40px;
-        -moz-box-shadow: 2px 2px 10px 2px #ccc;
-        -webkit-box-shadow: 2px 2px 10px 2px #ccc;
-        box-shadow: 2px 2px 10px 2px #ccc;
-      }
+        #loginDialogue {
+          width: 350px;
+          background-color: white;
+          margin: 150px auto;
+          border-radius: 2px;
+          padding: 40px;
+          -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+            0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+            0 2px 10px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+            0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        }
 
-      input,
-      input:focus {
-        background-color: #ededed;
-      }
+        input,
+        input:focus {
+          background-color: #ededed;
+        }
 
-      input {
-        border: none;
-        color: #2a83e3 !important;
-        padding: 10px 20px;
-        font-weight: bold;
-        font-size: 18px;
-      }
+        input {
+          border: none;
+          color: #2a83e3 !important;
+          padding: 10px 20px;
+          font-weight: bold;
+          font-size: 18px;
+        }
 
-      .btn-login {
-        background-color: #62c4f6;
-        color: white;
-        border: #62c4f6;
-      }
-    `}</style>
+        .btn-login {
+          background-color: #9fe37e;
+          color: white;
+          border: #9fe37e;
+        }
+      `}
+    </style>
   </Layout>
 )
 

@@ -8,7 +8,11 @@ const defaultOGImage = ''
 const Head = props => (
   <NextHead>
     <meta charset="UTF-8" />
-    <title>{props.title || ''}</title>
+    <title>
+      {props.title
+        ? `Clone the Internet | ${props.title}`
+        : 'Clone the Internet'}
+    </title>
     <meta
       name="description"
       content={props.description || defaultDescription}
@@ -35,6 +39,10 @@ const Head = props => (
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/css/compiled.min.css?ver=4.4.0"
     />
     <link
       rel="stylesheet"

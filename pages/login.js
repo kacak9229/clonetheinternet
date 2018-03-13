@@ -3,7 +3,7 @@ import fetch from 'isomorphic-unfetch'
 import Layout from '../components/layout'
 
 const Login = props => (
-  <Layout>
+  <Layout title="Login">
     <section id="login">
       <div className="container">
         <div id="loginDialogue">
@@ -23,14 +23,14 @@ const Login = props => (
               placeholder="Password"
             />
 
-            <a className="btn btn-block btn-lg btn-primary btn-login mt-5 text-white">
+            <a className="m-0 btn btn-block btn-lg btn-primary btn-login mt-5 text-white">
               Sign In
             </a>
           </form>
-          <p className="mt-3 lead font-weight-bold text-center">OR</p>
-          <a className="btn btn-block btn-social btn-facebook text-white text-left">
+          <p className="mt-3 lead text-center">OR</p>
+          <a className="m-0 btn btn-block btn-social btn-facebook text-white text-left">
             <span className="fa fa-facebook" />
-            <span className="ml-5">Login With Facebook</span>
+            <span className="ml-4">Login With Facebook</span>
           </a>
           <p className="mt-2 mb-0 text-center text-lead">
             Dont have an account?
@@ -54,9 +54,12 @@ const Login = props => (
         margin: 150px auto;
         border-radius: 2px;
         padding: 40px;
-        -moz-box-shadow: 2px 2px 10px 2px #ccc;
-        -webkit-box-shadow: 2px 2px 10px 2px #ccc;
-        box-shadow: 2px 2px 10px 2px #ccc;
+        -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+          0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+          0 2px 10px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16),
+          0 2px 10px 0 rgba(0, 0, 0, 0.12);
       }
 
       input,
@@ -73,9 +76,9 @@ const Login = props => (
       }
 
       .btn-login {
-        background-color: #62c4f6;
+        background-color: #9fe37e;
         color: white;
-        border: #62c4f6;
+        border: #9fe37e;
       }
 
       .btn-facebook {
